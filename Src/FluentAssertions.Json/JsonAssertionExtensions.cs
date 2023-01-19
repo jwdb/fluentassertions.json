@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace FluentAssertions.Json
 {
@@ -35,6 +37,33 @@ namespace FluentAssertions.Json
         public static JTokenAssertions Should(this JValue jValue)
         {
             return new JTokenAssertions(jValue);
+        }
+
+        /// <summary>
+        ///     Returns an <see cref="JsonNodeAssertions"/> object that can be used to assert the current <see cref="JsonNode"/>.
+        /// </summary>
+        [Pure]
+        public static JsonNodeAssertions Should(this JsonNode jsonNode)
+        {
+            return new JsonNodeAssertions(jsonNode);
+        }
+
+        /// <summary>
+        ///     Returns an <see cref="JsonNodeAssertions"/> object that can be used to assert the current <see cref="JsonArray"/>.
+        /// </summary>
+        [Pure]
+        public static JsonNodeAssertions Should(this JsonArray jsonArray)
+        {
+            return new JsonNodeAssertions(jsonArray);
+        }
+
+        /// <summary>
+        ///     Returns an <see cref="JsonNodeAssertions"/> object that can be used to assert the current <see cref="JsonObject"/>.
+        /// </summary>
+        [Pure]
+        public static JsonNodeAssertions Should(this JsonObject jsonObject)
+        {
+            return new JsonNodeAssertions(jsonObject);
         }
     }
 }
